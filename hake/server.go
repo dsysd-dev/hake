@@ -155,7 +155,7 @@ func (s *Server) SendMessageOnTopic(topic Topic, reader io.Reader) (string, erro
 	// create topic arn
 	topicArn := s.Arn(Sns, topic.String())
 
-	var buffer [10 * 1024]byte // Todo: reduce the size of this buffer
+	var buffer [10 * 1024 * 1024]byte // Todo: reduce the size of this buffer
 	n, err := reader.Read(buffer[:])
 	if err != nil {
 		return "", err
